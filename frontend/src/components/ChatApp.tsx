@@ -1,17 +1,21 @@
 import { useState } from "react";
+import { Message } from "../types";
 
 interface ChatAppProps {
-  messages: string[];
+  messages: Message[];
   sendMessageHandler: Function;
 }
 
 const ChatApp = ({ messages, sendMessageHandler }: ChatAppProps) => {
   const [text, setText] = useState("");
+
   return (
     <div>
       <ul>
-        {messages.map((message) => (
-          <li>{message}</li>
+        {messages.map(({ clientId, message }) => (
+          <li>
+            {clientId} said {message}
+          </li>
         ))}
       </ul>
       <input onChange={(event) => setText(event?.target.value)} />

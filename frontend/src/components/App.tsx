@@ -1,20 +1,26 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import ChatApp from "./ChatApp";
+import { v4 as uuidv4 } from "uuid";
+import { Message } from "../types";
+
+const clientId = uuidv4();
 
 const App = () => {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   const socket = useMemo(() => new WebSocket("ws://localhost:8080"), []);
 
   socket.onopen = (event) => {
-    socket.send("Hello Server!");
+    socket.send(
+      JSON.stringify({ clientId: clientId, message: "Hello Server!" })
+    );
   };
 
   // Listen for messages
   socket.onmessage = (event) => {
-    console.log("message from server", event);
-    setMessages([...messages, event.data]);
+    console.log("message from server", JSON.parse(event.data));
+    setMessages([...messages, JSON.parse(event.data)]);
   };
 
   useEffect(() => {
@@ -33,12 +39,12 @@ const App = () => {
 
   const sendMessageHandler = (message: string) => {
     console.log("message sent", message);
-    socket.send(message);
+    socket.send(JSON.stringify({ clientId: clientId, message }));
   };
 
   return (
     <div className="App">
-      Test
+      {clientId}
       <ChatApp messages={messages} sendMessageHandler={sendMessageHandler} />
     </div>
   );
