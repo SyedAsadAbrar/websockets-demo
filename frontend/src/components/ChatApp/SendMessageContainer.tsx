@@ -15,12 +15,16 @@ const SendMessageContainer = ({
   };
 
   return (
-    <>
-      <input value={text} onChange={(event) => setText(event?.target.value)} />
+    <div className="send-msg-container">
+      <input
+        className="send-msg-input"
+        value={text}
+        onChange={(event) => setText(event?.target.value)}
+      />
       <button onClick={() => sendMessageToServer()} disabled={!text.length}>
         Send
       </button>
-    </>
+    </div>
   );
 };
 

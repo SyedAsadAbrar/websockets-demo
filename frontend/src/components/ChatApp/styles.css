@@ -1,27 +1,41 @@
 .chat-app {
   padding: 10px;
-  .msg-container {
-    &.right {
-      text-align: right;
-    }
 
-    &.left {
-      text-align: left;
-    }
+  .messages-container {
+    margin-bottom: 20px;
 
-    &.chat-alert {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      font-size: small;
-      color: white;
-    }
+    .msg-container {
+      &.right {
+        text-align: right;
+      }
 
-    &.chat-left {
-      background-color: #ff9b9b;
-    }
+      &.left {
+        text-align: left;
+      }
 
-    &.chat-joined {
-      background-color: #71c9ce;
+      &.chat-alert {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: small;
+        color: white;
+      }
+
+      &.chat-left {
+        background-color: #ff9b9b;
+      }
+
+      &.chat-joined {
+        background-color: #71c9ce;
+      }
+    }
+  }
+
+  .send-msg-container {
+    display: flex;
+
+    .send-msg-input {
+      width: 100%;
+      margin-right: 10px;
     }
   }
 }

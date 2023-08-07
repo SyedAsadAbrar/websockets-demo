@@ -28,7 +28,7 @@ const MessagesContainer = ({ messages }: MessagesContainerProps) => {
   };
 
   return (
-    <div className="chat-container">
+    <div className="messages-container">
       {messages.map((messageObj, index) => {
         const { clientId, connectionStatus } = messageObj;
         return (
