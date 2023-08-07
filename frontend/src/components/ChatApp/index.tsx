@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { Message } from "../types";
-import { ClientIDContext } from "../utils/ClientIdContext";
+import { Message } from "../../types";
+import { ClientIDContext } from "../../utils/ClientIdContext";
 
 interface ChatAppProps {
   messages: Message[];
