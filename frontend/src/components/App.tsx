@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import ChatApp from "./ChatApp";
-import { v4 as uuidv4 } from "uuid";
 import { Message } from "../types";
+import { v4 as uuidv4 } from "uuid";
+
+import { ClientIDContext } from "../utils/ClientIdContext";
 
 const clientId = uuidv4();
 
@@ -43,10 +45,12 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      {clientId}
-      <ChatApp messages={messages} sendMessageHandler={sendMessageHandler} />
-    </div>
+    <ClientIDContext.Provider value={clientId}>
+      <div className="App">
+        {clientId}
+        <ChatApp messages={messages} sendMessageHandler={sendMessageHandler} />
+      </div>
+    </ClientIDContext.Provider>
   );
 };
 
