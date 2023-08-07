@@ -5,6 +5,7 @@ import { Message } from "../constants/types";
 import { v4 as uuidv4 } from "uuid";
 
 import { ClientIDContext } from "../utils/ClientIdContext";
+import { CONNECTION_STATUS } from "../constants/ChatApp";
 
 const clientId = uuidv4();
 
@@ -14,7 +15,12 @@ const App = () => {
   const socket = useMemo(() => new WebSocket("ws://localhost:8080"), []);
 
   socket.onopen = (event) => {
-    socket.send(JSON.stringify({ clientId, message: "has joined the chat" }));
+    const message: Message = {
+      clientId,
+      message: "has joined the chat",
+      connectionStatus: CONNECTION_STATUS.NEW_CONNECTION,
+    };
+    socket.send(JSON.stringify(message));
   };
 
   // Listen for messages
@@ -39,7 +45,12 @@ const App = () => {
 
   const sendMessageHandler = (message: string) => {
     console.log("message sent", message);
-    socket.send(JSON.stringify({ clientId, message }));
+    const messageObj: Message = {
+      clientId,
+      message,
+      connectionStatus: CONNECTION_STATUS.ONGOING,
+    };
+    socket.send(JSON.stringify(messageObj));
   };
 
   return (

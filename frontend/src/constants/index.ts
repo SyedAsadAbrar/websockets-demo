@@ -1,5 +1,5 @@
-import { CHAT_STATUS } from "./ChatApp";
+import { CONNECTION_STATUS } from "./ChatApp";
 
-const constants = { CHAT_STATUS };
+const constants = { CONNECTION_STATUS };
 
 export default constants;
