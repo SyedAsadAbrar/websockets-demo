@@ -1,0 +1,1 @@
+export const CHAT_STATUS = { NEW_CONNECTION: 0, NORMAL: 1, CLOSED: 2 };

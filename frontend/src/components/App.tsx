@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import ChatApp from "./ChatApp";
-import { Message } from "../types";
+import { Message } from "../constants/types";
 import { v4 as uuidv4 } from "uuid";
 
 import { ClientIDContext } from "../utils/ClientIdContext";
@@ -14,9 +14,7 @@ const App = () => {
   const socket = useMemo(() => new WebSocket("ws://localhost:8080"), []);
 
   socket.onopen = (event) => {
-    socket.send(
-      JSON.stringify({ clientId: clientId, message: "Hello Server!" })
-    );
+    socket.send(JSON.stringify({ clientId, message: "has joined the chat" }));
   };
 
   // Listen for messages
@@ -41,7 +39,7 @@ const App = () => {
 
   const sendMessageHandler = (message: string) => {
     console.log("message sent", message);
-    socket.send(JSON.stringify({ clientId: clientId, message }));
+    socket.send(JSON.stringify({ clientId, message }));
   };
 
   return (

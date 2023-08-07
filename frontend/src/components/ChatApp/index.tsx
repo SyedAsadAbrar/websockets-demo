@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Message } from "../../types";
+import { Message } from "../../constants/types";
 import { ClientIDContext } from "../../utils/ClientIdContext";
 
 interface ChatAppProps {
@@ -22,8 +22,8 @@ const ChatApp = ({ messages, sendMessageHandler }: ChatAppProps) => {
   return (
     <div>
       <ul>
-        {messages.map(({ clientId, message }) => (
-          <li>
+        {messages.map(({ clientId, message }, index) => (
+          <li key={index}>
             {clientId === clientIdFromContext ? "You" : clientId} {`->`}{" "}
             {message}
           </li>

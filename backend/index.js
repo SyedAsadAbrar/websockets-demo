@@ -26,7 +26,7 @@ wss.on("connection", (ws, req) => {
     });
   });
 
-  ws.on("close", (data) => {
+  ws.on("close", (code, reason) => {
     wss.clients.forEach((client) => {
       if (ws !== client && client.readyState === WebSocket.OPEN) {
         client.send(
