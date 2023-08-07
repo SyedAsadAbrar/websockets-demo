@@ -30,7 +30,7 @@ wss.on("connection", (ws, req) => {
     wss.clients.forEach((client) => {
       if (ws !== client && client.readyState === WebSocket.OPEN) {
         client.send(
-          JSON.stringify({ clientId: client.id, message: "has left the chat" })
+          JSON.stringify({ clientId: ws.id, message: "has left the chat" })
         );
       }
     });
