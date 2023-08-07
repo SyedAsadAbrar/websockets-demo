@@ -1,3 +1,5 @@
 import { CHAT_STATUS } from "./ChatApp";
 
-export default { CHAT_STATUS };
+const constants = { CHAT_STATUS };
+
+export default constants;
