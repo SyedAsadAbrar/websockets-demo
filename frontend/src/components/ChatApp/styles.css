@@ -1,10 +1,12 @@
 .chat-app {
   padding: 10px;
   .msg-container {
-    text-align: left;
-
     &.right {
       text-align: right;
+    }
+
+    &.left {
+      text-align: left;
     }
   }
 }

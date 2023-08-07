@@ -17,7 +17,7 @@ const App = () => {
   socket.onopen = (event) => {
     const message: Message = {
       clientId,
-      message: "has joined the chat",
+      message: null,
       connectionStatus: CONNECTION_STATUS.NEW_CONNECTION,
     };
     socket.send(JSON.stringify(message));
