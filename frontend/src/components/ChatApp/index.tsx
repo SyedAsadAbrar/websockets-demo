@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { Message } from "../../constants/types";
 import { ClientIDContext } from "../../utils/ClientIdContext";
+import "./styles.css";
+import classNames from "classnames";
 
 interface ChatAppProps {
   messages: Message[];
@@ -20,15 +22,20 @@ const ChatApp = ({ messages, sendMessageHandler }: ChatAppProps) => {
   console.log("messages", messages);
 
   return (
-    <div>
-      <ul>
+    <div className="chat-app">
+      <div className="chat-container">
         {messages.map(({ clientId, message }, index) => (
-          <li key={index}>
-            {clientId === clientIdFromContext ? "You" : clientId} {`->`}{" "}
+          <div
+            className={classNames("msg-container", {
+              right: clientId === clientIdFromContext,
+            })}
+            key={index}
+          >
+            {/* {clientId === clientIdFromContext ? "You" : clientId} {`->`}{" "} */}
             {message}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       <input value={text} onChange={(event) => setText(event?.target.value)} />
       <button onClick={() => sendMessageToServer()} disabled={!text.length}>
         Send
