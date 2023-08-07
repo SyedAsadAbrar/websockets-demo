@@ -8,5 +8,20 @@
     &.left {
       text-align: left;
     }
+
+    &.chat-alert {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: small;
+      color: white;
+    }
+
+    &.chat-left {
+      background-color: #ff9b9b;
+    }
+
+    &.chat-joined {
+      background-color: #71c9ce;
+    }
   }
 }

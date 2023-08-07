@@ -30,7 +30,7 @@ const MessagesContainer = ({ messages }: MessagesContainerProps) => {
   return (
     <div className="chat-container">
       {messages.map((messageObj, index) => {
-        const { clientId, message, connectionStatus } = messageObj;
+        const { clientId, connectionStatus } = messageObj;
         return (
           <div
             className={classNames("msg-container", {
@@ -40,6 +40,10 @@ const MessagesContainer = ({ messages }: MessagesContainerProps) => {
               left:
                 clientId !== clientIdFromContext &&
                 connectionStatus === CONNECTION_STATUS.ONGOING,
+              "chat-alert": connectionStatus !== CONNECTION_STATUS.ONGOING,
+              "chat-left": connectionStatus === CONNECTION_STATUS.CLOSED,
+              "chat-joined":
+                connectionStatus === CONNECTION_STATUS.NEW_CONNECTION,
             })}
             key={index}
           >
