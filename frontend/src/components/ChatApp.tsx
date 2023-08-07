@@ -14,7 +14,7 @@ const ChatApp = ({ messages, sendMessageHandler }: ChatAppProps) => {
       <ul>
         {messages.map(({ clientId, message }) => (
           <li>
-            {clientId} said {message}
+            {clientId} {`->`} {message}
           </li>
         ))}
       </ul>
